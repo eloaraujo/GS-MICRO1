@@ -1,13 +1,41 @@
+import { resolve } from 'node:path';
+import { ApiService } from './api.service';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FilterComponent } from './filter/filter.component';
-import { DataTableComponent } from './data-table/data-table.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CommonModule, FilterComponent, DataTableComponent]
+  imports: [RouterOutlet, FormsModule, CommonModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'ocean-20';
+
+  constructor(private service: ApiService){
+
+  }
+
+  regiao : string = "";
+  especie : string = "";
+  statusConservacao: string = "";
+  temperaturaMin : number = 0;
+  temperaturaMax : number = 0;
+  phMin : number = 0;
+  phMax : number = 0;
+  nivelPoluicao : string = "";
+
+dados : any[] = [];
+
+  pesquisar(){
+
+    var filter = {
+      regiao : this.regiao
+    }
+      this.service.getOceanData(filter)
+      .subscribe(retorno => this.dados = retorno);
+  }
+}
