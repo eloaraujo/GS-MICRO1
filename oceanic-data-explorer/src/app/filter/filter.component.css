@@ -1,0 +1,33 @@
+/* Styles for the filter component */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.filters label {
+  flex: 1 1 100%;
+  margin-bottom: 0.5em;
+}
+
+.filters input {
+  flex: 1 1 auto;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+}
+
+.filters button {
+  flex: 1 1 100%;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.25em;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #0056b3;
+}
